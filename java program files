@@ -1,0 +1,213 @@
+public class ButterflyPattern {
+    public static void main(String[] args) {
+        int n = 5;
+
+        // Upper part
+        for (int i = 1; i <= n; i++) {
+            for (int j = 1; j <= i; j++) {
+                System.out.print("3");
+            }
+
+            for (int j = 1; j <= 2 * (n - i); j++) {
+                System.out.print(" ");
+            }
+
+            for (int j = 1; j <= i; j++) {
+                System.out.print("3");
+            }
+
+            System.out.println();
+        }
+
+        // Lower part
+        for (int i = n; i >= 1; i--) {
+            for (int j = 1; j <= i; j++) {
+                System.out.print("3");
+            }
+
+            for (int j = 1; j <= 2 * (n - i); j++) {
+                System.out.print(" ");
+            }
+
+            for (int j = 1; j <= i; j++) {
+                System.out.print("3");
+            }
+
+            System.out.println();
+        }
+    }
+output
+3        3
+33      33
+333    333
+3333  3333
+3333333333
+3333333333
+3333  3333
+333    333
+33      33
+3        3
+//diamond
+public class DiamondPattern {
+    public static void main(String[] args) {
+        int n = 5; // number of rows for top half
+
+        // Upper half
+        for (int i = 1; i <= n; i++) {
+            for (int j = i; j < n; j++) {
+                System.out.print(" ");
+            }
+            for (int j = 1; j <= (2 * i - 1); j++) {
+                System.out.print("6");
+            }
+            System.out.println();
+        }
+
+        // Lower half
+        for (int i = n - 1; i >= 1; i--) {
+            for (int j = n; j > i; j--) {
+                System.out.print(" ");
+            }
+            for (int j = 1; j <= (2 * i - 1); j++) {
+                System.out.print("6");
+            }
+            System.out.println();
+        }
+    }
+}
+output
+ 6
+   666
+  66666
+ 6666666
+666666666
+ 6666666
+  66666
+   666
+    6
+//forloop
+public class Main {
+    public static void main(String[] args) {
+
+        // Print numbers from 1 to 5
+        for (int i = 1; i <= 5; i++) {
+            System.out.println(i);
+        }
+
+    }
+}
+output
+1
+2
+3
+4
+5
+//multiplematrix
+import java.util.Scanner;
+
+public class MatrixMultiplication {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int[][] a = new int[2][2];
+        int[][] b = new int[2][2];
+        int[][] c = new int[2][2];
+
+        System.out.println("Enter first matrix:");
+        for (int i = 0; i < 2; i++) {
+            for (int j = 0; j < 2; j++) {
+                a[i][j] = sc.nextInt();
+            }
+        }
+
+        System.out.println("Enter second matrix:");
+        for (int i = 0; i < 2; i++) {
+            for (int j = 0; j < 2; j++) {
+                b[i][j] = sc.nextInt();
+            }
+        }
+
+        // Matrix multiplication
+        for (int i = 0; i < 2; i++) {
+            for (int j = 0; j < 2; j++) {
+                c[i][j] = 0;
+                for (int k = 0; k < 2; k++) {
+                    c[i][j] += a[i][k] * b[k][j];
+                }
+            }
+        }
+
+        System.out.println("Result matrix:");
+        for (int i = 0; i < 2; i++) {
+            for (int j = 0; j < 2; j++) {
+                System.out.print(c[i][j] + " ");
+            }
+            System.out.println();
+        }
+
+        sc.close();
+    }
+}
+output
+Enter first matrix:
+2 3
+4 5
+Enter second matrix:
+6 7
+8 9
+Result matrix:
+36 41 
+64 73 
+//nestedloop
+public class NestedLoopMatrix {
+    public static void main(String[] args) {
+
+        int[][] a = { {1, 2}, {3, 4} };
+        int[][] b = { {5, 6}, {7, 8} };
+        int[][] c = new int[2][2];
+
+        // Nested loops
+        for (int i = 0; i < 2; i++) {
+            for (int j = 0; j < 2; j++) {
+                for (int k = 0; k < 2; k++) {
+                    c[i][j] += a[i][k] * b[k][j];
+                }
+            }
+        }
+
+        // Print result
+        for (int i = 0; i < 2; i++) {
+            for (int j = 0; j < 2; j++) {
+                System.out.print(c[i][j] + " ");
+            }
+            System.out.println();
+        }
+    }
+}
+output
+19 22 
+43 50 
+//transverse
+public class TransposeMatrix {
+    public static void main(String[] args) {
+
+        int[][] a = {
+            {1, 2, 3},
+            {4, 5, 6}
+        };
+
+        System.out.println("Transpose matrix:");
+
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 2; j++) {
+                System.out.print(a[j][i] + " ");
+            }
+            System.out.println();
+        }
+    }
+}
+output
+Transpose matrix:
+1 4 
+2 5 
+3 6 
