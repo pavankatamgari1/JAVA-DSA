@@ -1,0 +1,664 @@
+//Chart At
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter a word: ");
+        String str = sc.next();
+
+        System.out.println("First character: " + str.charAt(0));
+    }
+}
+output
+Enter a word: pavan
+First character: p
+// Code Point At
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter a word: ");
+        String str = sc.next();
+
+        System.out.println("Unicode of first character: " + str.codePointAt(0));
+    }
+}
+output
+Enter a word: pavan
+Unicode of first character: 112
+// Code Point Before
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter a word: ");
+        String str = sc.next();
+
+        System.out.println("Unicode before index 1: " + str.codePointBefore(1));
+    }
+}
+Enter a word: pavan
+Unicode before index 1: 112
+//Code Point Count
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter a word: ");
+        String str = sc.next();
+
+        System.out.println("Total code points: " + str.codePointCount(0, str.length()));
+    }
+}
+output
+Enter a word: pavan
+Total code points: 5
+// Compare To
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter first string: ");
+        String s1 = sc.next();
+
+        System.out.print("Enter second string: ");
+        String s2 = sc.next();
+
+        System.out.println(s1.compareTo(s2));
+    }
+}
+output
+Enter first string: pavan
+Enter second string: harsha
+8
+//ConCat
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter first name: ");
+        String first = sc.nextLine();
+
+        System.out.print("Enter last name: ");
+        String last = sc.nextLine();
+
+        String fullName = first.concat(" ").concat(last);
+
+        System.out.println("Full Name: " + fullName);
+    }
+}
+output
+Enter first name: pavan
+Enter last name: harsha
+Full Name: pavan harsha
+//Contains
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter a sentence: ");
+        String str = sc.nextLine();
+
+        System.out.print("Enter a word to search: ");
+        String word = sc.nextLine();
+
+        if (str.contains(word)) {
+            System.out.println("Word Found");
+        } else {
+            System.out.println("Word Not Found");
+        }
+    }
+}
+output
+Enter a sentence: pavan is a good boy
+Enter a word to search: good
+Word Found
+//Content Equals
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter first string: ");
+        String s1 = sc.nextLine();
+
+        System.out.print("Enter second string: ");
+        String s2 = sc.nextLine();
+
+        if 
+(s1.contentEquals(s2)) {
+            System.out.println("Contents are equal");
+        } else {
+            System.out.println("Contents are not equal");
+        }
+    }
+}
+output
+Enter first string: pavan
+Enter second string: harsha
+Contents are not equal
+//Copy Value Of
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter a word: ");
+        String input = sc.nextLine();
+
+        char[] ch = input.toCharArray();
+
+        String result = String.copyValueOf(ch);
+
+        System.out.println("Copied String: " + result);
+    }
+}
+output
+Enter a word: pavan
+Copied String: pavan
+//Ends With
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter a filename: ");
+        String file = sc.nextLine();
+
+        if (file.endsWith(".txt")) {
+            System.out.println("Text File");
+        } else {
+            System.out.println("Not a Text File");
+        }
+    }
+}
+output
+Enter a filename: pavan
+Not a Text File
+//Equals
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter first string: ");
+        String s1 = sc.nextLine();
+
+        System.out.print("Enter second string: ");
+        String s2 = sc.nextLine();
+
+        if (s1.equals(s2)) {
+            System.out.println("Strings are Equal");
+        } else {
+            System.out.println("Strings are Not Equal");
+        }
+    }
+}
+output
+Enter first string: pavan
+Enter second string: pavan
+Strings are Equal
+//Equals Ignore Case
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter first string: ");
+        String s1 = sc.nextLine();
+
+        System.out.print("Enter second string: ");
+        String s2 = sc.nextLine();
+
+        if (s1.equalsIgnoreCase(s2)) {
+            System.out.println("Strings are Equal");
+        } else {
+            System.out.println("Strings are Not Equal");
+        }
+    }
+}
+output
+Enter first string: pavan
+Enter second string: harsha
+Strings are Not Equal
+//Format
+public class Main {
+    public static void main(String[] args) {
+        String name = "Java";
+        int num = 10;
+        double price = 25.75;
+        char grade = 'A';
+        boolean pass = true;
+
+        String result = String.format(
+                "%s %d %.2f %c %b",
+                name, num, price, grade, pass);
+
+        System.out.println(result);
+    }
+}
+output
+Java 10 25.75 A true
+//Get Bytes
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter a string: ");
+        String str = sc.nextLine();
+
+        byte[] b = str.getBytes();
+
+        System.out.println("Byte values:");
+
+        for (byte i : b) {
+            System.out.println(i);
+        }
+    }
+}
+output
+Enter a string: pavan
+Byte values:
+112
+97
+118
+97
+110
+//Get Char
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter a string: ");
+        String str = sc.nextLine();
+
+        char[] ch = new char[str.length()];
+
+        str.getChars(0, str.length(), ch, 0);
+
+        System.out.println("Characters:");
+
+        for (char c : ch) {
+            System.out.print(c + " ");
+        }
+    }
+}
+output
+Enter a string: pavan
+Characters:
+p a v a n 
+//Hash Code
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter a string: ");
+        String str = sc.nextLine();
+
+        System.out.println("Hash Code: " + str.hashCode());
+    }
+}
+output
+Enter a string: pavan
+Hash Code: 106440594
+//Index Of
+public class Main {
+    public static void main(String[] args) {
+        String str = "Java Java";
+
+        System.out.println(str.indexOf("Java", 1));
+    }
+}
+output
+5
+//Is Empty
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter a string: ");
+        String str = sc.nextLine();
+
+        if (str.isEmpty()) {
+            System.out.println("String is Empty");
+        } else {
+            System.out.println("String is Not Empty");
+        }
+    }
+}
+output
+Enter a string: pavan
+String is Not Empty
+//Join
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter first name: ");
+        String first = sc.nextLine();
+
+        System.out.print("Enter last name: ");
+        String last = sc.nextLine();
+
+        String fullName = String.join(" ", first, last);
+
+        System.out.println("Full Name: " + fullName);
+    }
+}
+output
+Enter first name: pavan
+Enter last name: katamgari
+Full Name: pavan katamgari
+//Last Index Of
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter a word: ");
+        String str = sc.nextLine();
+
+        System.out.print("Enter a character: ");
+        char ch = sc.next().charAt(0);
+
+        System.out.println("Last Index: " + str.lastIndexOf(ch));
+    }
+}
+output
+Enter a word: pavan
+Enter a character: good
+Last Index: -1
+//Length
+public class Main {
+    public static void main(String[] args) {
+        String str = "Java";
+        int[] arr = {10, 20, 30};
+
+        System.out.println(str.length()); // 4
+        System.out.println(arr.length);   // 3
+    }
+}
+output
+4
+3
+//Matchs
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter a string: ");
+        String str = sc.nextLine();
+
+        if (str.matches("[A-Za-z]+")) {
+            System.out.println("Only letters");
+        } else {
+            System.out.println("Contains other characters");
+        }
+    }
+}
+output
+Enter a string: pavan
+Only letters
+//Replace
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter a sentence: ");
+        String str = sc.nextLine();
+
+        String result = str.replace("Java", "Python");
+
+        System.out.println(result);
+    }
+}
+output
+Enter a sentence: pavan is good person
+pavan is good person
+// Replace all
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter a string: ");
+        String str = sc.nextLine();
+
+        String result = str.replaceAll("[aeiouAEIOU]", "*");
+
+        System.out.println(result);
+    }
+}
+output
+Enter a string: pavan
+p*v*n
+//Replace First
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter a sentence: ");
+        String str = sc.nextLine();
+
+        String result = str.replaceFirst("Java", "Python");
+
+        System.out.println(result);
+    }
+}
+output
+Enter a sentence: pavan is a good boy
+pavan is a good boy
+//Split
+public class Main {
+    public static void main(String[] args) {
+        String str = "Java is easy";
+
+        String[] words = str.split(" ");
+
+        for (String word : words) {
+            System.out.println(word);
+        }
+    }
+}
+output
+Java
+is
+easy
+//Starts With
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter a string: ");
+        String str = sc.nextLine();
+
+        if (str.startsWith("Java")) {
+            System.out.println("Starts with Java");
+        } else {
+            System.out.println("Does not start with Java");
+        }
+    }
+}
+output
+Enter a string: pavan
+Does not start with Java
+//Sub Sequence
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter a string: ");
+        String str = sc.nextLine();
+
+        System.out.println("SubSequence: " + str.subSequence(0, 4));
+    }
+}
+output
+Enter a string: pavan
+SubSequence: pava
+//Sub Streams
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter a string: ");
+        String str = sc.nextLine();
+
+        System.out.println("Substring: " + str.substring(0, 5));
+    }
+}
+output
+Enter a string: pavan
+Substring: pavan
+//To Char Array
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter a string: ");
+        String str = sc.nextLine();
+
+        char[] ch = str.toCharArray();
+
+        System.out.println("Characters:");
+
+        for (char c : ch) {
+            System.out.println(c);
+        }
+    }
+}
+output
+Enter a string: pavan
+Characters:
+p
+a
+v
+a
+n
+//To Lower Case
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter a string: ");
+        String str = sc.nextLine();
+
+        System.out.println("Lowercase: " + str.toLowerCase());
+    }
+}
+output
+Enter a string: pavan
+Lowercase: pavan
+//To Upper Case
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter a string: ");
+        String str = sc.nextLine();
+
+        System.out.println("Uppercase: " + str.toUpperCase());
+    }
+}
+output
+Enter a string: pavan
+Uppercase: PAVAN
+//To String
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter a string: ");
+        String str = sc.nextLine();
+
+        System.out.println("Result: " + str.toString());
+    }
+}
+output
+Enter a string: pavan
+Result: pavan
+// Trim
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter a string: ");
+        String str = sc.nextLine();
+
+        System.out.println("After trim: " + str.trim());
+    }
+}
+output
+Enter a string: pavan
+After trim: pavan
+// Value Of
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter a number: ");
+        int num = sc.nextInt();
+
+        String str = String.valueOf(num);
+
+        System.out.println("String: " + str);
+    }
+}
+output
+Enter a number: 5
+String: 5
