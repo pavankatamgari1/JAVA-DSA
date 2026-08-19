@@ -1,0 +1,663 @@
+easy
+//Convert Binary Number in a Linked List to Integer in java
+class Solution {
+
+    static class ListNode {
+        int val;
+        ListNode next;
+
+        ListNode(int val) {
+            this.val = val;
+        }
+    }
+
+    public int getDecimalValue(ListNode head) {
+
+        int result = 0;
+
+        while (head != null) {
+            result = result * 2 + head.val;
+            head = head.next;
+        }
+
+        return result;
+    }
+
+    public static void main(String[] args) {
+
+        // Creating linked list: 1 -> 0 -> 1
+        ListNode head = new ListNode(1);
+        head.next = new ListNode(0);
+        head.next.next = new ListNode(1);
+
+        Solution obj = new Solution();
+
+        int decimal = obj.getDecimalValue(head);
+
+        System.out.println("Decimal value: " + decimal);
+    }
+}
+output
+Decimal value: 5
+//Reverse Linked List
+class Solution {
+
+    static class ListNode {
+        int val;
+        ListNode next;
+
+        ListNode(int val) {
+            this.val = val;
+            this.next = null;
+        }
+    }
+
+    public ListNode reverseList(ListNode head) {
+
+        ListNode prev = null;
+        ListNode current = head;
+
+        while (current != null) {
+
+            ListNode next = current.next;
+
+            current.next = prev;
+
+            prev = current;
+            current = next;
+        }
+
+        return prev;
+    }
+
+    public static void main(String[] args) {
+
+        // Creating linked list
+        ListNode head = new ListNode(1);
+        head.next = new ListNode(2);
+        head.next.next = new ListNode(3);
+        head.next.next.next = new ListNode(4);
+
+        Solution obj = new Solution();
+
+        // Reverse the linked list
+        head = obj.reverseList(head);
+
+        // Display reversed list
+        ListNode temp = head;
+
+        while (temp != null) {
+            System.out.print(temp.val + " ");
+            temp = temp.next;
+        }
+    }
+}
+output
+4 3 2 1 
+//Middle of the Linked List
+class Solution {
+
+    static class ListNode {
+        int val;
+        ListNode next;
+
+        ListNode(int val) {
+            this.val = val;
+            this.next = null;
+        }
+    }
+
+    public ListNode middleNode(ListNode head) {
+
+        ListNode slow = head;
+        ListNode fast = head;
+
+        while (fast != null && fast.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+
+        return slow;
+    }
+
+    public static void main(String[] args) {
+
+        // Creating linked list
+        ListNode head = new ListNode(1);
+        head.next = new ListNode(2);
+        head.next.next = new ListNode(3);
+        head.next.next.next = new ListNode(4);
+        head.next.next.next.next = new ListNode(5);
+
+        Solution obj = new Solution();
+
+        ListNode middle = obj.middleNode(head);
+
+        System.out.println("Middle element: " + middle.val);
+    }
+}
+output
+Middle element: 3
+//Medium
+//sort list
+class Solution {
+
+    static class ListNode {
+        int val;
+        ListNode next;
+
+        ListNode(int val) {
+            this.val = val;
+        }
+    }
+
+    public ListNode sortList(ListNode head) {
+
+        // Empty list or one node
+        if (head == null || head.next == null) {
+            return head;
+        }
+
+        // Find middle
+        ListNode slow = head;
+        ListNode fast = head;
+
+        while (fast.next != null && fast.next.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+
+        // Split into two lists
+        ListNode second = slow.next;
+        slow.next = null;
+
+        // Sort both halves
+        ListNode left = sortList(head);
+        ListNode right = sortList(second);
+
+        // Merge sorted lists
+        return merge(left, right);
+    }
+
+    private ListNode merge(ListNode left, ListNode right) {
+
+        ListNode dummy = new ListNode(0);
+        ListNode current = dummy;
+
+        while (left != null && right != null) {
+
+            if (left.val <= right.val) {
+                current.next = left;
+                left = left.next;
+            } else {
+                current.next = right;
+                right = right.next;
+            }
+
+            current = current.next;
+        }
+
+        if (left != null) {
+            current.next = left;
+        }
+
+        if (right != null) {
+            current.next = right;
+        }
+
+        return dummy.next;
+    }
+
+    public static void main(String[] args) {
+
+        // 4 -> 2 -> 1 -> 3
+        ListNode head = new ListNode(4);
+        head.next = new ListNode(2);
+        head.next.next = new ListNode(1);
+        head.next.next.next = new ListNode(3);
+
+        Solution obj = new Solution();
+
+        head = obj.sortList(head);
+
+        // Print sorted list
+        while (head != null) {
+            System.out.print(head.val + " ");
+            head = head.next;
+        }
+    }
+}
+output
+1 2 3 4 
+//Insertion Sort List
+class Solution {
+
+    static class ListNode {
+        int val;
+        ListNode next;
+
+        ListNode(int val) {
+            this.val = val;
+        }
+    }
+
+    public ListNode insertionSortList(ListNode head) {
+
+        ListNode dummy = new ListNode(0);
+
+        ListNode current = head;
+
+        while (current != null) {
+
+            ListNode next = current.next;
+
+            ListNode prev = dummy;
+
+            // Find correct position
+            while (prev.next != null &&
+                   prev.next.val < current.val) {
+                prev = prev.next;
+            }
+
+            // Insert current node
+            current.next = prev.next;
+            prev.next = current;
+
+            current = next;
+        }
+
+        return dummy.next;
+    }
+
+    public static void main(String[] args) {
+
+        // 4 -> 2 -> 1 -> 3
+        ListNode head = new ListNode(4);
+        head.next = new ListNode(2);
+        head.next.next = new ListNode(1);
+        head.next.next.next = new ListNode(3);
+
+        Solution obj = new Solution();
+
+        head = obj.insertionSortList(head);
+
+        // Print sorted list
+        while (head != null) {
+            System.out.print(head.val + " ");
+            head = head.next;
+        }
+    }
+}
+output
+1 2 3 4
+//Delete the Middle Node of a Linked List
+class Solution {
+
+    static class ListNode {
+        int val;
+        ListNode next;
+
+        ListNode(int val) {
+            this.val = val;
+        }
+    }
+
+    public ListNode deleteMiddle(ListNode head) {
+
+        // If only one node
+        if (head.next == null) {
+            return null;
+        }
+
+        ListNode slow = head;
+        ListNode fast = head;
+        ListNode prev = null;
+
+        // Find middle node
+        while (fast != null && fast.next != null) {
+            prev = slow;
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+
+        // Delete middle node
+        prev.next = slow.next;
+
+        return head;
+    }
+
+    public static void main(String[] args) {
+
+        // 1 -> 2 -> 3 -> 4 -> 5
+        ListNode head = new ListNode(1);
+        head.next = new ListNode(2);
+        head.next.next = new ListNode(3);
+        head.next.next.next = new ListNode(4);
+        head.next.next.next.next = new ListNode(5);
+
+        Solution obj = new Solution();
+
+        head = obj.deleteMiddle(head);
+
+        // Display list
+        while (head != null) {
+            System.out.print(head.val + " ");
+            head = head.next;
+        }
+    }
+}
+output
+1 2 4 5
+//hard
+//Reverse Nodes in k-Group
+class Solution {
+
+    static class ListNode {
+        int val;
+        ListNode next;
+
+        ListNode(int val) {
+            this.val = val;
+        }
+    }
+
+    public ListNode reverseKGroup(ListNode head, int k) {
+
+        if (head == null || k == 1) {
+            return head;
+        }
+
+        ListNode dummy = new ListNode(0);
+        dummy.next = head;
+
+        ListNode groupPrev = dummy;
+
+        while (true) {
+
+            // Find the kth node
+            ListNode kth = groupPrev;
+
+            for (int i = 0; i < k; i++) {
+                kth = kth.next;
+
+                if (kth == null) {
+                    return dummy.next;
+                }
+            }
+
+            ListNode groupNext = kth.next;
+
+            // Reverse the group
+            ListNode prev = groupNext;
+            ListNode current = groupPrev.next;
+
+            while (current != groupNext) {
+
+                ListNode next = current.next;
+
+                current.next = prev;
+
+                prev = current;
+                current = next;
+            }
+
+            // Connect previous part to reversed group
+            ListNode temp = groupPrev.next;
+            groupPrev.next = kth;
+            groupPrev = temp;
+        }
+    }
+
+    public static void main(String[] args) {
+
+        // 1 -> 2 -> 3 -> 4 -> 5
+        ListNode head = new ListNode(1);
+        head.next = new ListNode(2);
+        head.next.next = new ListNode(3);
+        head.next.next.next = new ListNode(4);
+        head.next.next.next.next = new ListNode(5);
+
+        Solution obj = new Solution();
+
+        head = obj.reverseKGroup(head, 2);
+
+        // Print result
+        while (head != null) {
+            System.out.print(head.val + " ");
+            head = head.next;
+        }
+    }
+}
+output
+2 1 4 3 5 
+//Merge k Sorted Lists
+import java.util.PriorityQueue;
+
+class Solution {
+
+    static class ListNode {
+        int val;
+        ListNode next;
+
+        ListNode(int val) {
+            this.val = val;
+        }
+    }
+
+    public ListNode mergeKLists(ListNode[] lists) {
+
+        // Min heap
+        PriorityQueue<ListNode> pq =
+            new PriorityQueue<>((a, b) -> a.val - b.val);
+
+        // Add first node of every list
+        for (ListNode node : lists) {
+            if (node != null) {
+                pq.add(node);
+            }
+        }
+
+        ListNode dummy = new ListNode(0);
+        ListNode current = dummy;
+
+        while (!pq.isEmpty()) {
+
+            // Get smallest node
+            ListNode node = pq.poll();
+
+            // Add it to result
+            current.next = node;
+            current = current.next;
+
+            // Add next node from same list
+            if (node.next != null) {
+                pq.add(node.next);
+            }
+        }
+
+        return dummy.next;
+    }
+
+    public static void main(String[] args) {
+
+        // List 1: 1 -> 4 -> 5
+        ListNode a = new ListNode(1);
+        a.next = new ListNode(4);
+        a.next.next = new ListNode(5);
+
+        // List 2: 1 -> 3 -> 4
+        ListNode b = new ListNode(1);
+        b.next = new ListNode(3);
+        b.next.next = new ListNode(4);
+
+        // List 3: 2 -> 6
+        ListNode c = new ListNode(2);
+        c.next = new ListNode(6);
+
+        ListNode[] lists = {a, b, c};
+
+        Solution obj = new Solution();
+
+        ListNode result = obj.mergeKLists(lists);
+
+        // Print result
+        while (result != null) {
+            System.out.print(result.val + " ");
+            result = result.next;
+        }
+    }
+}
+output
+1 1 2 3 4 4 5 6 
+//LFU Cache
+import java.util.*;
+
+class LFUCache {
+
+    class Node {
+        int key;
+        int value;
+        int frequency;
+
+        Node(int key, int value) {
+            this.key = key;
+            this.value = value;
+            this.frequency = 1;
+        }
+    }
+
+    int capacity;
+    int minFrequency;
+
+    HashMap<Integer, Node> cache;
+    HashMap<Integer, LinkedHashSet<Integer>> frequencyMap;
+
+    public LFUCache(int capacity) {
+        this.capacity = capacity;
+        this.minFrequency = 0;
+
+        cache = new HashMap<>();
+        frequencyMap = new HashMap<>();
+    }
+
+    // Get value
+    public int get(int key) {
+
+        if (!cache.containsKey(key)) {
+            return -1;
+        }
+
+        Node node = cache.get(key);
+
+        increaseFrequency(node);
+
+        return node.value;
+    }
+
+    // Insert or update value
+    public void put(int key, int value) {
+
+        if (capacity == 0) {
+            return;
+        }
+
+        // Key already exists
+        if (cache.containsKey(key)) {
+
+            Node node = cache.get(key);
+
+            node.value = value;
+
+            increaseFrequency(node);
+
+            return;
+        }
+
+        // Cache is full
+        if (cache.size() == capacity) {
+
+            LinkedHashSet<Integer> set =
+                frequencyMap.get(minFrequency);
+
+            int removeKey = set.iterator().next();
+
+            set.remove(removeKey);
+
+            cache.remove(removeKey);
+
+            if (set.isEmpty()) {
+                frequencyMap.remove(minFrequency);
+            }
+        }
+
+        // Add new node
+        Node newNode = new Node(key, value);
+
+        cache.put(key, newNode);
+
+        minFrequency = 1;
+
+        frequencyMap
+            .computeIfAbsent(1, k -> new LinkedHashSet<>())
+            .add(key);
+    }
+
+    // Increase frequency
+    private void increaseFrequency(Node node) {
+
+        int oldFrequency = node.frequency;
+
+        LinkedHashSet<Integer> oldSet =
+            frequencyMap.get(oldFrequency);
+
+        oldSet.remove(node.key);
+
+        if (oldSet.isEmpty()) {
+
+            frequencyMap.remove(oldFrequency);
+
+            if (minFrequency == oldFrequency) {
+                minFrequency++;
+            }
+        }
+
+        node.frequency++;
+
+        frequencyMap
+            .computeIfAbsent(
+                node.frequency,
+                k -> new LinkedHashSet<>()
+            )
+            .add(node.key);
+    }
+
+    // Main method
+    public static void main(String[] args) {
+
+        LFUCache cache = new LFUCache(2);
+
+        cache.put(1, 1);
+        cache.put(2, 2);
+
+        System.out.println(cache.get(1));
+
+        cache.put(3, 3);
+
+        System.out.println(cache.get(2));
+        System.out.println(cache.get(3));
+
+        cache.put(4, 4);
+
+        System.out.println(cache.get(1));
+        System.out.println(cache.get(3));
+        System.out.println(cache.get(4));
+    }
+}
+output
+1
+-1
+3
+-1
+3
+4
+
